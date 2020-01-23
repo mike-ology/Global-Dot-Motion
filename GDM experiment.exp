@@ -1,5 +1,5 @@
 <ver>21.1</ver>
-<efn>C:\Users\Michael\OneDrive\University\A. Current Projects\Global Dot Motion\GDM experiment.exp</efn>
+<efn>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\GDM experiment.exp</efn>
 <author>MCWE</author>
 <con>
 <pause>P</pause>
@@ -41,12 +41,13 @@
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>C:\Users\Michael\OneDrive\University\A. Current Projects\Global Dot Motion</dsd>
+<dsd>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion</dsd>
 <dwm>2</dwm>
 <dxv>8</dxv>
 <efs>
-<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Global Dot Motion\GDM test.sce</filename>
-<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Global Dot Motion\GDM scenario.sce</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\GDM scenario.sce</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\GDM test.sce</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\sub_stimulus_generation.pcl</filename>
 </efs>
 <exclusive_mouse>0</exclusive_mouse>
 <exp_version>0.0.1</exp_version>
@@ -121,7 +122,7 @@
 <idt>0</idt>
 <ilc>0</ilc>
 <ip_chans></ip_chans>
-<lfd>C:\Users\Michael\OneDrive\University\A. Current Projects\Global Dot Motion</lfd>
+<lfd>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion</lfd>
 <lnb>2</lnb>
 <lno>4</lno>
 <log>
@@ -205,6 +206,16 @@
 <name>Keyboard</name>
 </device>
 <device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>spacedesk Keyboard</name>
+</device>
+<device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>HID Keyboard Device</name>
+</device>
+<device>
 <abs_axis>
 <dead_zone>0</dead_zone>
 <max>1000</max>
@@ -247,21 +258,6 @@
 <name>HID-compliant mouse</name>
 </device>
 <device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 1</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>Microsoft Input Configuration Device</name>
-</device>
-<device>
 <abs_axis>
 <dead_zone>0</dead_zone>
 <max>1000</max>
@@ -301,67 +297,17 @@
 <dx_device_type>0</dx_device_type>
 <max_raw_pos>65535</max_raw_pos>
 <min_raw_pos>0</min_raw_pos>
-<name>HID-compliant mouse 1</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 2</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 3</name>
+<name>spacedesk Mouse</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>Surface Hid Mini Driver</name>
+<name>Dell KB216 Wired Keyboard</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>Surface Hid Mini Driver 1</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Precise Touch</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Converted Portable Device Control device</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Micr</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Converted Portable Device Control device 1</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Micr 1</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Virtual HID Framework (VHF) HID device</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Virtual HID Framework (VHF) HID device 1</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Virtual HID Framework (VHF) HID device 2</name>
+<name>Dell KB216 Wired Keyboard 1</name>
 </device>
 <device>
 <axis>
@@ -707,30 +653,22 @@
 <idv>
 <device_type>3</device_type>
 <dx_device_type>19</dx_device_type>
+<ibn>1</ibn>
+<ibn>2</ibn>
 <ibn>Space</ibn>
-<ibn>Up</ibn>
-<ibn>Down</ibn>
-<ibn>Left</ibn>
-<ibn>Right</ibn>
 <idn>Keyboard</idn>
 <index>0</index>
 <index>1</index>
 <index>2</index>
-<index>3</index>
-<index>4</index>
 <label></label>
 <label></label>
 <label></label>
-<label></label>
-<label></label>
+<offset>2</offset>
+<offset>3</offset>
 <offset>57</offset>
-<offset>200</offset>
-<offset>208</offset>
-<offset>203</offset>
-<offset>205</offset>
 </idv>
 <overrides></overrides>
-<sfn>C:\Users\Michael\OneDrive\University\A. Current Projects\Global Dot Motion\GDM scenario.sce</sfn>
+<sfn>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\GDM scenario.sce</sfn>
 </sce>
 <sct>
 <capture_device>

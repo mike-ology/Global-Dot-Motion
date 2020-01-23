@@ -1,7 +1,7 @@
 # HEADER #
 
 scenario = "GDM";
-active_buttons = 5;
+active_buttons = 3;
 response_logging = log_active;
 no_logfile = true; # default logfile not created
 response_matching = legacy_matching;
@@ -15,23 +15,54 @@ default_formatted_text = true;
 begin;
 
 trial {
-	trial_type = specific_response;
-	terminator_button = 1, 2, 3, 4, 5;
-	trial_duration = 10;
+	trial_type = fixed;
+	trial_duration = 20;
 	picture {} pic1;
 }trial1;
 
 box {
 	height = 5;
 	width = 5;
-	color = 255, 0, 0;
-}box_origin;
-
-box {
-	height = 5;
-	width = 5;
 	color = 0, 255, 0;
 }box_dot;
+
+trial {
+	trial_type = specific_response;
+	terminator_button = 1, 2;
+	trial_duration = 5000;
+	stimulus_event {
+		picture {
+			text {
+				caption = "Were the dots moving in a circular motion\nin the first [1] or second [2] stimulus?";
+			};
+			x = 0; y = 0;
+		};
+		response_active = true;
+		target_button = 1, 2;
+	};
+}prompt_trial;
+
+picture {
+	text {
+		caption = "FEEDBACK PLACEHOLDER";
+	}feedback_text;
+	x = 0; y = 0;
+}feedback_pic;
+	
+trial {
+	trial_type = specific_response;
+	terminator_button = 3;
+	trial_duration = forever;
+	stimulus_event {
+		picture {
+			text {
+				caption = "Press SPACE to initiate the next set of trials.";
+			};
+			x = 0; y = 0;
+		};
+	};
+}start_trial;
+	
 
 #####
 begin_pcl;
@@ -50,7 +81,7 @@ int dot_width = 6;
 int num_dots = 50;
 int num_frames = 60;
 array <double> dot_coords [num_dots][num_frames][2]; # array for storing the x/y coordinates of each dot on each frame
-int starting_coherence_lv = 25;
+int starting_coherence_lv = 35;
 int current_coherence_lv;
 array <int> radial_direction [2] = { -1, 1 };
 
@@ -83,12 +114,14 @@ until
 	staircase_count > num_staircases
 begin
 	
+	start_trial.present();
+	
 	current_coherence_lv = starting_coherence_lv;
 
 	loop
 		int trial_count = 1
 	until
-		trial_count > 2
+		trial_count > num_trials
 	begin
 		
 		loop
@@ -126,10 +159,38 @@ begin
 		pic1.clear();
 		pic1.present();
 		wait_interval( 1000 );
-		trial_count = trial_count + 1;
 		
 		# adjust coherence based on performance
-		current_coherence_lv = current_coherence_lv + 0;
+		prompt_trial.present();
+
+		term.print_line(stimulus_manager.last_stimulus_data().reaction_time());
+		
+		int key;
+		if stimulus_manager.last_stimulus_data().reaction_time()  != 0 then
+			key = response_manager.last_response();
+		else
+			key = 0;
+		end;
+		
+		term.print_line(key);
+		
+		if key == arr_correct_stimulus[trial_count] then
+			feedback_text.set_caption( "CORRECT", true );
+			current_coherence_lv = current_coherence_lv - 5;
+		else
+			feedback_text.set_caption( "INCORRECT", true );
+			current_coherence_lv = current_coherence_lv + 5;
+		end;
+		
+		if current_coherence_lv > num_dots then current_coherence_lv = num_dots
+		elseif current_coherence_lv < 0 then current_coherence_lv = 0
+		end;
+	
+		feedback_pic.present();
+		wait_interval( 1000 );
+
+		trial_count = trial_count + 1;
+		
 	end;
 
 	staircase_count = staircase_count + 1;
