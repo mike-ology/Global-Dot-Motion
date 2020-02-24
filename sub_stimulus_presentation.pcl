@@ -9,7 +9,11 @@ begin
 	begin
 		
 		pic1.clear();
-		pic1.add_part( aperture_border, 0, 0 );
+
+		if show_aperture_border == true then
+			pic1.add_part( aperture_border, 0, 0 );
+		else
+		end;
 		
 		loop
 			int i = 1
@@ -17,9 +21,9 @@ begin
 			i > num_dots
 		begin
 			if stimulus_num == 1 then
-				pic1.add_part( box_dot, coords_stimulus_1[i][f][1], coords_stimulus_1[i][f][2] );
+				pic1.add_3dpart( plane1, coords_stimulus_1[i][f][1], coords_stimulus_1[i][f][2], 0 );
 			elseif stimulus_num == 2 then
-				pic1.add_part( box_dot, coords_stimulus_2[i][f][1], coords_stimulus_2[i][f][2] );
+				pic1.add_3dpart( plane1, coords_stimulus_2[i][f][1], coords_stimulus_2[i][f][2], 0 );
 			end;
 			
 			i = i + 1;

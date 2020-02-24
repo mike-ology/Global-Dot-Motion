@@ -1,5 +1,5 @@
 <ver>21.1</ver>
-<efn>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\GDM experiment.exp</efn>
+<efn>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM experiment.exp</efn>
 <author>MCWE</author>
 <con>
 <pause>P</pause>
@@ -30,27 +30,30 @@
 <depchg>1</depchg>
 <discard_windows_messages>0</discard_windows_messages>
 <display_status_window>1</display_status_window>
-<dmd>0</dmd>
-<dmh>0</dmh>
-<dmr>1</dmr>
-<dmrf>1</dmrf>
-<dmw>0</dmw>
+<dmd>32</dmd>
+<dmh>1080</dmh>
+<dmr>60</dmr>
+<dmrf>60</dmrf>
+<dmw>1920</dmw>
 <docs>
 <args></args>
 <exfl></exfl>
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion</dsd>
+<dsd>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion</dsd>
 <dwm>2</dwm>
 <dxv>8</dxv>
 <efs>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\GDM scenario.sce</filename>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\GDM test.sce</filename>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\sub_stimulus_generation.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_generation.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_presentation.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_generate_prompt.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_logfile_saving.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_screen_scaling.pcl</filename>
 </efs>
-<exclusive_mouse>0</exclusive_mouse>
-<exp_version>0.0.1</exp_version>
+<exclusive_mouse>1</exclusive_mouse>
+<exp_version>0.2.0</exp_version>
 <exparam>
 <man>
 <cfg>
@@ -122,7 +125,7 @@
 <idt>0</idt>
 <ilc>0</ilc>
 <ip_chans></ip_chans>
-<lfd>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion</lfd>
+<lfd>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM logfiles</lfd>
 <lnb>2</lnb>
 <lno>4</lno>
 <log>
@@ -135,7 +138,7 @@
 <set_def_file></set_def_file>
 <stimulus_list>0</stimulus_list>
 <subject_id></subject_id>
-<subject_id_pol>0</subject_id_pol>
+<subject_id_pol>1</subject_id_pol>
 <video_list>0</video_list>
 <warnings>1</warnings>
 </log>
@@ -208,12 +211,22 @@
 <device>
 <device_type>3</device_type>
 <dx_device_type>0</dx_device_type>
-<name>spacedesk Keyboard</name>
+<name>HID Keyboard Device</name>
 </device>
 <device>
 <device_type>3</device_type>
 <dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device</name>
+<name>HID Keyboard Device 1</name>
+</device>
+<device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>HID Keyboard Device 2</name>
+</device>
+<device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>HID Keyboard Device 3</name>
 </device>
 <device>
 <abs_axis>
@@ -297,17 +310,57 @@
 <dx_device_type>0</dx_device_type>
 <max_raw_pos>65535</max_raw_pos>
 <min_raw_pos>0</min_raw_pos>
-<name>spacedesk Mouse</name>
+<name>HID-compliant mouse 1</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>Dell KB216 Wired Keyboard</name>
+<name>Surface Hid Mini Driver</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>Dell KB216 Wired Keyboard 1</name>
+<name>Surface Hid Mini Driver 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Precise Touch</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Converted Portable Device Control device</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Micr</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Converted Portable Device Control device 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Micr 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Virtual HID Framework (VHF) HID device</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Virtual HID Framework (VHF) HID device 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Virtual HID Framework (VHF) HID device 2</name>
 </device>
 <device>
 <axis>
@@ -621,31 +674,6 @@
 <rng>1</rng>
 <rts>0</rts>
 <sce>
-<idv>
-<device_type>3</device_type>
-<dx_device_type>19</dx_device_type>
-<ibn>Space</ibn>
-<ibn>Up</ibn>
-<ibn>Down</ibn>
-<ibn>Left</ibn>
-<ibn>Right</ibn>
-<idn>Keyboard</idn>
-<index>0</index>
-<index>1</index>
-<index>2</index>
-<index>3</index>
-<index>4</index>
-<label></label>
-<label></label>
-<label></label>
-<label></label>
-<label></label>
-<offset>57</offset>
-<offset>200</offset>
-<offset>208</offset>
-<offset>203</offset>
-<offset>205</offset>
-</idv>
 <overrides></overrides>
 <sfn>all_scenarios</sfn>
 </sce>
@@ -668,7 +696,7 @@
 <offset>57</offset>
 </idv>
 <overrides></overrides>
-<sfn>D:\Personal\OneDrive\University\A. Current Projects\Global Dot Motion\GDM scenario.sce</sfn>
+<sfn>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</sfn>
 </sce>
 <sct>
 <capture_device>
@@ -750,4 +778,4 @@
 <unc></unc>
 <upb>0</upb>
 <urp>0</urp>
-<wob>1</wob>
+<wob>0</wob>

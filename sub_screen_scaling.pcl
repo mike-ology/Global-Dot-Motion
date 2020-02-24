@@ -1,0 +1,130 @@
+# Version 1.1.0
+
+sub screen_check
+begin
+	
+	if display_device.width() == req_screen_x && display_device.height() == req_screen_y then
+		# no need for adjustment, screen resolution is optimal
+	
+	else
+
+		# display prompts for manual adjustments
+
+		line_graphic screen_check_frame = new line_graphic;
+
+		double line_thickness = 50.0;
+
+		screen_check_frame.set_line_color( 255, 255, 0, 255 );
+		screen_check_frame.set_line_width( line_thickness );
+
+		screen_check_frame.add_line( (((-req_screen_x / 2) * scale_factor) + (line_thickness / 2)), (((req_screen_y / 2) * scale_factor) - (line_thickness / 2)), (((req_screen_x / 2) * scale_factor) - (line_thickness / 2)), (((req_screen_y / 2) * scale_factor) - (line_thickness / 2)) ); 
+		screen_check_frame.line_to( (((req_screen_x / 2) * scale_factor) - (line_thickness / 2)), (((-req_screen_y / 2) * scale_factor) + (line_thickness / 2)) );
+		screen_check_frame.line_to( (((-req_screen_x / 2) * scale_factor) + (line_thickness / 2)), (((-req_screen_y / 2) * scale_factor) + (line_thickness / 2)) );
+		screen_check_frame.close( false );
+		screen_check_frame.redraw();
+
+		prompt_message.set_caption( "This experiment was designed for screens running at 1920 x 1080.\n\nIf the yellow frame does not reach the edge of the screen (or you cannot see it),\nplease exit the experiment and adjust the screen settings.\n\nAlternatively, press SPACEBAR to adjust the display now.", true );
+		create_new_prompt( 1 );
+		prompt_pic.add_part( screen_check_frame, 0, 0 );
+
+		if parameter_manager.configuration_name() == "Mobile / Touchscreen" then
+			mid_button_text.set_caption( "Press here to continue", true )
+		else
+			mid_button_text.set_caption( "Press " + response_manager.button_name(1, false, true) + " to continue", true );
+		end;
+
+		prompt_trial.present();
+
+		### check to see if auto-scaling worked
+
+		scale_factor = prompt_scale_factor;
+		screen_check_frame.clear();
+		
+		screen_check_frame.set_line_color( 255, 255, 0, 255 );
+		screen_check_frame.set_line_width( line_thickness );
+
+		screen_check_frame.add_line( (((-req_screen_x / 2) * scale_factor) + (line_thickness / 2)), (((req_screen_y / 2) * scale_factor) - (line_thickness / 2)), (((req_screen_x / 2) * scale_factor) - (line_thickness / 2)), (((req_screen_y / 2) * scale_factor) - (line_thickness / 2)) ); 
+		screen_check_frame.line_to( (((req_screen_x / 2) * scale_factor) - (line_thickness / 2)), (((-req_screen_y / 2) * scale_factor) + (line_thickness / 2)) );
+		screen_check_frame.line_to( (((-req_screen_x / 2) * scale_factor) + (line_thickness / 2)), (((-req_screen_y / 2) * scale_factor) + (line_thickness / 2)) );
+		screen_check_frame.close( false );
+		screen_check_frame.redraw();
+
+		prompt_message.set_caption( "The scaling factor of the experiment has been automatically adjusted for your screen.\n\nIf the display still does not look correct\nplease exit the experiment and adjust your system resolution to\n"+string(req_screen_x)+"x"+string(req_screen_y)+".", true );
+		create_new_prompt( 1 );
+		prompt_pic.add_part( screen_check_frame, 0, 0 );
+
+		if parameter_manager.configuration_name() == "Mobile / Touchscreen" then
+			mid_button_text.set_caption( "Press here to continue", true )
+		else
+			mid_button_text.set_caption( "Press " + response_manager.button_name(1, false, true) + " to continue", true );
+		end;
+
+		prompt_trial.present();
+
+		if parameter_manager.configuration_name() == "Mobile / Touchscreen" then
+			# go to manual adjustment (not working currently)
+		else
+			# no manual adjustment for computer screens currently
+			return
+		end;
+
+		# Manual adjustments
+
+		loop
+			int response_key
+		until
+			response_key == 3
+		begin
+			
+			create_new_prompt(3);
+			left_button_text.set_caption( "SMALLER", true );
+			mid_button_text.set_caption( "DONE", true );
+			right_button_text.set_caption( "LARGER", true );
+			
+			screen_check_frame.clear();
+			screen_check_frame.add_line( (((-req_screen_x / 2) * scale_factor) + (line_thickness / 2)), (((req_screen_y / 2) * scale_factor) - (line_thickness / 2)), (((req_screen_x / 2) * scale_factor) - (line_thickness / 2)), (((req_screen_y / 2) * scale_factor) - (line_thickness / 2)) ); 
+			screen_check_frame.line_to( (((req_screen_x / 2) * scale_factor) - (line_thickness / 2)), (((-req_screen_y / 2) * scale_factor) + (line_thickness / 2)) );
+			screen_check_frame.line_to( (((-req_screen_x / 2) * scale_factor) + (line_thickness / 2)), (((-req_screen_y / 2) * scale_factor) + (line_thickness / 2)) );
+			screen_check_frame.close( false );
+			screen_check_frame.redraw();
+
+			prompt_pic.add_part( screen_check_frame, 0, 0 );
+
+			if parameter_manager.configuration_name() == "Mobile / Touchscreen" then
+				prompt_message.set_caption( "Use the buttons below to adjust the frame.\n\nPress DONE to continue", true );
+				left_button_text.set_caption( "SMALLER", true );
+				mid_button_text.set_caption( "DONE", true );
+				right_button_text.set_caption( "LARGER", true );
+				prompt_trial.set_terminator_buttons( { 3, 4, 5 } );
+			else
+				prompt_message.set_caption( "Use the keys below to adjust the frame.\n\nPress SPACEBAR to continue", true );
+				left_button_text.set_caption( "SMALLER [Z]", true );
+				mid_button_text.set_caption( "DONE [SPACEBAR]", true );
+				right_button_text.set_caption( "LARGER [/]", true );
+				prompt_trial.set_terminator_buttons( { 1, 2, 3 } );
+			end;
+			
+			prompt_trial.present();
+
+			response_key = response_manager.last_response();
+			
+			if response_key == 1 || response_key == 4 then
+				scale_factor = scale_factor - 0.1;
+				if scale_factor < 0.5 then
+					scale_factor = 0.5
+				else
+				end;
+			elseif
+				response_key == 2 || response_key == 5 then
+				scale_factor = scale_factor + 0.1;
+				if scale_factor > 2.0 then
+					scale_factor = 2.0
+				else
+				end;			
+			end; #ENDIF
+
+		end; #ENDLOOP
+	
+	end; # ENDIF
+	
+end;
