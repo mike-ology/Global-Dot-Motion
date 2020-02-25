@@ -1,5 +1,5 @@
 <ver>21.1</ver>
-<efn>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM experiment.exp</efn>
+<efn>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM experiment.exp</efn>
 <author>MCWE</author>
 <con>
 <pause>P</pause>
@@ -41,16 +41,16 @@
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion</dsd>
-<dwm>2</dwm>
+<dsd>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion</dsd>
+<dwm>0</dwm>
 <dxv>8</dxv>
 <efs>
-<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</filename>
-<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_generation.pcl</filename>
-<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_presentation.pcl</filename>
-<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_generate_prompt.pcl</filename>
-<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_logfile_saving.pcl</filename>
-<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_screen_scaling.pcl</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_generation.pcl</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_presentation.pcl</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_generate_prompt.pcl</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_logfile_saving.pcl</filename>
+<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_screen_scaling.pcl</filename>
 </efs>
 <exclusive_mouse>1</exclusive_mouse>
 <exp_version>0.2.0</exp_version>
@@ -67,7 +67,68 @@
 <ss>0</ss>
 </r>
 <ss>
-<sd></sd>
+<sd>
+<val>
+<dat>
+<val>2</val>
+</dat>
+<id>0</id>
+</val>
+<val>
+<dat>
+<val>1</val>
+</dat>
+<id>1</id>
+</val>
+<val>
+<dat>
+<val>50</val>
+</dat>
+<id>2</id>
+</val>
+<val>
+<dat>
+<val>26</val>
+</dat>
+<id>3</id>
+</val>
+<val>
+<dat>
+<val>2</val>
+</dat>
+<id>4</id>
+</val>
+<val>
+<dat>
+<val>35</val>
+</dat>
+<id>5</id>
+</val>
+<val>
+<dat>
+<val>0</val>
+</dat>
+<id>6</id>
+</val>
+<val>
+<dat>
+<val>0</val>
+</dat>
+<id>7</id>
+</val>
+<val>
+<dat>
+<val>10.2</val>
+</dat>
+<id>8</id>
+</val>
+<val>
+<dat>
+<val>205</val>
+</dat>
+<id>9</id>
+</val>
+</sd>
 <sid>-1</sid>
 </ss>
 </dcfg>
@@ -76,13 +137,179 @@
 <dl>
 <grps>
 <grp>
-<gn></gn>
-<pl></pl>
+<gn>Stimulus Parameters</gn>
+<pl>
+<pid>5</pid>
+<pid>9</pid>
+<pid>7</pid>
+<pid>2</pid>
+<pid>3</pid>
+<pid>8</pid>
+</pl>
+</grp>
+<grp>
+<gn>General Parameters</gn>
+<pl>
+<pid>4</pid>
+<pid>0</pid>
+<pid>1</pid>
+</pl>
+</grp>
+<grp>
+<gn>Save Parameters</gn>
+<pl>
+<pid>6</pid>
+</pl>
 </grp>
 </grps>
 </dl>
 <parms>
-<parms></parms>
+<parms>
+<parm>
+<id>0</id>
+<set>
+<desc>Number of correct trials in a row required to shift the coherence level down (increasing difficulty).
+
+Ignored for initial correct trials, which immediately result in a level change.</desc>
+<edit>1</edit>
+<name>n_down</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>int</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>1</id>
+<set>
+<desc>Number of incorrect trials in a row required to shift the coherence level up (decreasing difficulty).</desc>
+<edit>1</edit>
+<name>n_up</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>int</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>2</id>
+<set>
+<desc>Number of dots that are present in each stimulus</desc>
+<edit>1</edit>
+<name>num_dots</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>int</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>3</id>
+<set>
+<desc>Number of frames that the stimulus is displayed for before the stimulus disappears. Affects stimulus duration in conjunction with the frame rate of the display (each frame is presented on the next available refresh).</desc>
+<edit>1</edit>
+<name>num_frames</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>int</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>4</id>
+<set>
+<desc>Number of staircases to present, from start to finish. Each staircase begins at the initial coherence level.</desc>
+<edit>1</edit>
+<name>num_staircases</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>int</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>5</id>
+<set>
+<desc>Coherence level used at the beginning of each staircase</desc>
+<edit>1</edit>
+<name>starting_coherence_level</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>int</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>6</id>
+<set>
+<desc>TRUE - initially save logfile data to a location on C:/ and copy this file to the default logfile location at the experiments end. Useful when running from a network location and reducing network read/write issues.
+FALSE - save the logfile to the default logfile location</desc>
+<edit>1</edit>
+<name>Use Local Save</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>bool</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>7</id>
+<set>
+<desc>TRUE - a circle is drawn to show the edge of the aperture that dots appear within
+FALSE - the circle is not drawn</desc>
+<edit>1</edit>
+<name>show_aperture_border</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>bool</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>8</id>
+<set>
+<desc>Distance, in pixels, that the dot will travel on each frame. Combined with the frame rate of the display, affects the overall distance traveled per second (i.e. speed)</desc>
+<edit>1</edit>
+<name>dot_distance</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>double</type>
+<vis>1</vis>
+</set>
+</parm>
+<parm>
+<id>9</id>
+<set>
+<desc>Diameter of the aperture, in pixels, that dots are presented in. Dots that move outside of the aperture are relocated randomly within the aperture in a vacant position.</desc>
+<edit>1</edit>
+<name>aperture_radius</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>int</type>
+<vis>1</vis>
+</set>
+</parm>
+</parms>
 <ssl></ssl>
 </parms>
 <pass></pass>
@@ -125,7 +352,7 @@
 <idt>0</idt>
 <ilc>0</ilc>
 <ip_chans></ip_chans>
-<lfd>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM logfiles</lfd>
+<lfd>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM logfiles</lfd>
 <lnb>2</lnb>
 <lno>4</lno>
 <log>
@@ -214,21 +441,6 @@
 <name>HID Keyboard Device</name>
 </device>
 <device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 1</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 2</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 3</name>
-</device>
-<device>
 <abs_axis>
 <dead_zone>0</dead_zone>
 <max>1000</max>
@@ -271,96 +483,14 @@
 <name>HID-compliant mouse</name>
 </device>
 <device>
-<abs_axis>
-<dead_zone>0</dead_zone>
-<max>1000</max>
-<min>-1000</min>
-<name>X-axis</name>
-<saturation>1</saturation>
-</abs_axis>
-<abs_axis>
-<dead_zone>0</dead_zone>
-<max>1000</max>
-<min>-1000</min>
-<name>Y-axis</name>
-<saturation>1</saturation>
-</abs_axis>
-<axis>
-<max>1000</max>
-<min>-1000</min>
-<name>X-axis</name>
-<restricted>1</restricted>
-<scale>1</scale>
-</axis>
-<axis>
-<max>1000</max>
-<min>-1000</min>
-<name>Y-axis</name>
-<restricted>1</restricted>
-<scale>1</scale>
-</axis>
-<axis>
-<max>1000</max>
-<min>-1000</min>
-<name>Wheel</name>
-<restricted>1</restricted>
-<scale>1</scale>
-</axis>
-<device_type>2</device_type>
-<dx_device_type>0</dx_device_type>
-<max_raw_pos>65535</max_raw_pos>
-<min_raw_pos>0</min_raw_pos>
-<name>HID-compliant mouse 1</name>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Dell KB216 Wired Keyboard</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>Surface Hid Mini Driver</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Surface Hid Mini Driver 1</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Precise Touch</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Converted Portable Device Control device</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Micr</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Converted Portable Device Control device 1</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Micr 1</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Virtual HID Framework (VHF) HID device</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Virtual HID Framework (VHF) HID device 1</name>
-</device>
-<device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Virtual HID Framework (VHF) HID device 2</name>
+<name>Dell KB216 Wired Keyboard 1</name>
 </device>
 <device>
 <axis>
@@ -696,7 +826,7 @@
 <offset>57</offset>
 </idv>
 <overrides></overrides>
-<sfn>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</sfn>
+<sfn>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</sfn>
 </sce>
 <sct>
 <capture_device>

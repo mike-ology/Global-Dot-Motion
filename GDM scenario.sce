@@ -94,7 +94,7 @@ bool attempt_scaling_procedure = true;
 # Logfile may be optionally created on local disk (when running from network location)
 string local_path = "C:/Presentation Output/Global Dot Motion 2020/";
 string filename_prefix = "GDM - Participant ";
-string use_local_save = parameter_manager.get_string( "Use Local Save", "NO" );
+bool use_local_save = parameter_manager.get_bool( "Use Local Save", false );
 
 #######################
 
@@ -112,21 +112,25 @@ create_logfile();
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 # Experiment parameters
-int n_down = 2;
-int n_up = 1;
-array <int> array_staircase [8][2] = { { 16, -1}, { 8, 1}, {4, -1}, {2, 1}, {1, -1}, {1, 1}, {1, -1}, {1, 1} };
+int n_down = parameter_manager.get_int( "n_down", 2 );
+int n_up = parameter_manager.get_int( "n_up", 1 );
+
+# Staircase movements - add more values here to adjust the step-size behaviour. Every second step should alternate between increases and decreases
 # value 1 = size of each step at this level, value 2 = affects whether an increase or decrease occurs (also used to check whether currently stepping up or down)
-int num_staircases = 2; # How many individual staircases should be presented?
-bool show_aperture_border = false;
+array <int> array_staircase [8][2] = { { 16, -1}, { 8, 1}, {4, -1}, {2, 1}, {1, -1}, {1, 1}, {1, -1}, {1, 1} };
+
+int num_staircases = parameter_manager.get_int( "num_staircases", 2 ); # How many individual staircases should be presented?
+bool show_aperture_border = parameter_manager.get_bool( "show_aperture_border", false );;
 
 # Stimulus parameters (coherence ignored for random stimulus)
 double x_origin = 0.0;
 double y_origin = 0.0;
-double distance = 10.2; # used for arc-length of radial movements and radius of random movements. 5.4deg/sec in Grinter paper - current value based off a 60Hz screen
-int aperture_radius = 205; # 6.48deg in Grinter paper.
+double distance = parameter_manager.get_double( "dot_distance", 10.2 ); # used for arc-length of radial movements and radius of random movements. 5.4deg/sec in Grinter paper - current value based off a 60Hz screen
+int aperture_radius = parameter_manager.get_int( "aperture_radius", 205 ); # 6.48deg in Grinter paper.
 int dot_width = 9; # used to attempt to prevent overlaps with other dots - does not actually affect the pre-made dot image used in the experiment.
-int num_dots = 50; # 50 used in Grinter paper
-int num_frames = 26; #426ms in Grinter paper. Assuming 60Hz, 1 frame = 16.7ms. 426/16.7 = 25.55
+int num_dots = parameter_manager.get_int( "num_dots", 50 ); # 50 used in Grinter paper
+int num_frames = parameter_manager.get_int( "num_frames", 26 ); #426ms in Grinter paper. Assuming 60Hz, 1 frame = 16.7ms. 426/16.7 = 25.55
+
 array <double> dot_coords [num_dots][num_frames][2]; # array for storing the x/y coordinates of each dot on each frame
 array <int> radial_direction [2] = { -1, 1 };
 
@@ -140,7 +144,7 @@ aperture_border.set_color( 255, 255, 255, 255 );
 aperture_border.redraw();
 
 # Response Data
-int starting_coherence_lv = 35;
+int starting_coherence_lv = parameter_manager.get_int( "starting_coherence_level", 35 );
 int current_coherence_lv;
 int s;
 int trial_count;
@@ -276,22 +280,32 @@ begin
 			array_outcomes.add( { "CORRECT", "STEP DOWN" } );
 		
 		elseif trial_correct == true && s != 1 then
-			# run loop check if previous trial responses indicate a change is necessary
-			loop
-				int i = 1
-			until
-				i > n_down - 1 || i > array_outcomes.count() # loop will not run or be needed if n_up == 1 || loop cannot check trials that do not exist!
-			begin
-				if array_outcomes[array_outcomes.count() - (i-1)][1] == "CORRECT" && array_outcomes[array_outcomes.count() - (i-1)][2] == "STEP SAME" then
-					level_change = true;
-					array_outcomes.add( { "CORRECT", "STEP DOWN" } );
-					# STEP DOWN
-					i = i + 1; # continue checking previous trials
-				else
-					level_change = false;
-					array_outcomes.add( { "CORRECT", "STEP SAME" } );
-					# STEP SAME
-					break; # if finding an instance of prior trial without the same level, set level_change to false and end loop
+			if n_down == 1 then
+				# STEP DOWN - no need to check previous trials 
+				level_change = true;
+				array_outcomes.add( { "CORRECT", "STEP DOWN" } );
+			elseif n_down - 1 > array_outcomes.count() then
+				# STEP SAME - can't possibly be enough correct trials in a row to initiate a step change
+				level_change = false;
+				array_outcomes.add( { "CORRECT", "STEP SAME" } );
+			else
+				# run loop check if previous trial responses indicate a change is necessary
+				loop
+					int i = 1
+				until
+					i > n_down - 1
+				begin
+					if array_outcomes[array_outcomes.count() - (i-1)][1] == "CORRECT" && array_outcomes[array_outcomes.count() - (i-1)][2] == "STEP SAME" then
+						level_change = true;
+						array_outcomes.add( { "CORRECT", "STEP DOWN" } );
+						# STEP DOWN
+						i = i + 1; # continue checking previous trials
+					else
+						level_change = false;
+						array_outcomes.add( { "CORRECT", "STEP SAME" } );
+						# STEP SAME
+						break; # if finding an instance of prior trial without the same level, set level_change to false and end loop
+					end;
 				end;
 			end;
 			
@@ -300,12 +314,16 @@ begin
 				# STEP UP - no need to check previous trials 
 				level_change = true;
 				array_outcomes.add( { "INCORRECT", "STEP UP" } );
+			elseif n_up - 1 > array_outcomes.count() then 
+				# STEP SAME - can't possibly be enough correct trials in a row to initiate a step change
+				level_change = false;
+				array_outcomes.add( { "INCORRECT", "STEP SAME" } );
 			else
 				# run loop check if previous trial responses indicate a change is necessary
 				loop
 					int i = 1
 				until
-					i > n_up - 1 || i > array_outcomes.count() # loop will not run or be needed if n_up == 1 || loop cannot check trials that do not exist!
+					i > n_up - 1 ##|| i > array_outcomes.count() # loop will not run or be needed if n_up == 1 || loop cannot check trials that do not exist!
 				begin
 					if array_outcomes[array_outcomes.count() - (i-1)][1] == "INCORRECT" && array_outcomes[array_outcomes.count() - (i-1)][2] == "STEP SAME" then
 						level_change = true;

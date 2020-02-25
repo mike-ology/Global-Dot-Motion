@@ -26,7 +26,7 @@ begin
 
 		filename = filename_prefix + participant + "_" + string( logfile_inc ) + ".txt";
 
-		if use_local_save == "YES" then
+		if use_local_save == true then
 			create_directory( local_path );
 			if file_exists( local_path + filename ) then
 				# do nothing
@@ -54,10 +54,10 @@ end;
 ### LOCAL FILE >> NETWORK FILE ###
 
 sub
-	bool sub_save_to_network( string path, string name, string save )
+	bool sub_save_to_network( string path, string name, bool save )
 begin
 
-	if save == "YES" then
+	if save == true then
 
 		# Create message graphic and present
 		
