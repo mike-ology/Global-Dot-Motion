@@ -9,10 +9,47 @@ default_clear_active_stimuli = true;
 default_text_color = 255, 255, 255;
 default_background_color = 127, 127, 127;
 default_font = "Arial";
-default_font_size = 36;
+default_font_size = 32;
 default_formatted_text = true;
 
 begin;
+
+trial {
+	trial_type = specific_response;
+	terminator_button = 3;
+	trial_duration = 8000;
+
+	picture {
+		text {
+			caption = "In this task, you will be presented with pairs of moving dot images\nlike the ones below"; 
+		};
+		x = 0; y = 400;
+		text {
+			caption = "One image will contain dots that move completely randomly, while the other will contain\ndots that appear to move in a circular motion\n\nNote that the circular-moving dots do not make perfect movements. This is because on each\nframe of animation, a random selection of dots are chosen to move in a circle and\nthe rest move randomly"; 
+		};
+		x = 0; y = -150;
+	}pic_instruct1;
+	time = 0;
+
+	video {
+		filename = "random.avi";
+#		release_on_stop = false;
+		use_audio = false;
+		x = -300; y = 155;
+	}eg_random;
+	time = 0;
+
+	video {
+		filename = "coherent.avi";
+#		release_on_stop = false;
+		use_audio = false;
+		x = 300; y = 155;
+	}eg_coherent;
+	time = 0;	
+
+	target_button = 3;
+	response_active = true;
+}instruct_trial;
 
 trial {
 	trial_type = fixed;
@@ -46,7 +83,7 @@ trial {
 	stimulus_event {
 		picture {
 			text {
-				caption = "Were the dots moving in a circular motion\nin the first [1] or second [2] stimulus?";
+				caption = "Were the dots moving in a circular motion\nin the first [1] or second [2] image?";
 			};
 			x = 0; y = 0;
 		};
@@ -79,6 +116,10 @@ trial {
 
 #####
 begin_pcl;
+
+pic1.present();
+eg_random.prepare();
+eg_coherent.prepare();
 
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # User Setup
@@ -125,11 +166,18 @@ bool show_aperture_border = parameter_manager.get_bool( "show_aperture_border", 
 # Stimulus parameters (coherence ignored for random stimulus)
 double x_origin = 0.0;
 double y_origin = 0.0;
-double distance = parameter_manager.get_double( "dot_distance", 10.2 ); # used for arc-length of radial movements and radius of random movements. 5.4deg/sec in Grinter paper - current value based off a 60Hz screen
+
+double distance = parameter_manager.get_double( "dot_distance", 2.84 ); 
+# Used for arc-length of radial movements and length of random movements. 5.4deg/sec in Grinter paper.
+# Using lab monitors, at 60Hz this should be 2.84px/frame deg, and 100Hz should be 1.70px/frame.
+
+int num_frames = parameter_manager.get_int( "num_frames", 26 );
+# Used to calculate the duration of each stimulus before it is removed from the screen
+# 426ms stimulus duration in Grinter paper. At 60Hz, the equates to roughly 26 frames, and 100Hz equates to 42 frames (note this gives participants more 'pieces' of information)
+
 int aperture_radius = parameter_manager.get_int( "aperture_radius", 205 ); # 6.48deg in Grinter paper.
 int dot_width = 9; # used to attempt to prevent overlaps with other dots - does not actually affect the pre-made dot image used in the experiment.
 int num_dots = parameter_manager.get_int( "num_dots", 50 ); # 50 used in Grinter paper
-int num_frames = parameter_manager.get_int( "num_frames", 26 ); #426ms in Grinter paper. Assuming 60Hz, 1 frame = 16.7ms. 426/16.7 = 25.55
 
 array <double> dot_coords [num_dots][num_frames][2]; # array for storing the x/y coordinates of each dot on each frame
 array <int> radial_direction [2] = { -1, 1 };
@@ -180,6 +228,64 @@ log.print("Rspns.\t");
 log.print("Crrct.\t");
 log.print("Outcome\t" );
 log.print("\n");
+
+#########################################################
+###                   INSTRUCTIONS                    ###
+#########################################################
+
+prompt_trial.set_terminator_button( 3 );
+
+create_new_prompt(1);
+left_box.set_color( 255, 255, 0 );
+mid_box.set_color( 255, 255, 0 );
+right_box.set_color( 255, 255, 0 );
+mid_button_text.set_background_color( 255, 255, 0 );
+pic_instruct1.add_part( left_box, ( -req_screen_x / 2.0 ) * ( 2.0 / 3.0 ) * prompt_scale_factor, ( -req_screen_y / 2.0 ) * ( 4.0 / 5.0 ) * prompt_scale_factor ) ;
+pic_instruct1.add_part( mid_box, 0, ( -req_screen_y / 2.0 ) * ( 4.0 / 5.0 ) * prompt_scale_factor ) ;
+pic_instruct1.add_part( right_box, ( req_screen_x / 2.0 ) * ( 2.0 / 3.0 ) * prompt_scale_factor, ( -req_screen_y / 2.0 ) * ( 4.0 / 5.0 ) * prompt_scale_factor ) ;
+mid_button_text.set_caption( "Press SPACEBAR to continue", true );
+pic_instruct1.add_part( mid_button_text, 0.0, ( -req_screen_y / 2.0 ) * ( 4.0 / 5.0 ) * prompt_scale_factor ) ;
+
+if parameter_manager.get_bool( "Use Video Instruction", false ) == true then
+
+	loop
+		bool end_loop = false
+	until
+		end_loop == true
+	begin
+		int resp_count_before = response_manager.response_count(3);
+		instruct_trial.present();
+		int resp_count_after = response_manager.response_count(3);
+		if resp_count_before != resp_count_after then
+			end_loop = true;
+		end;
+	end;
+
+else
+	create_new_prompt(1);
+	prompt_message.set_caption("For each trial in this task, you will be presented with pairs of images with moving dots. One image will contain dots moving in a circular motion while the other image will contain dots moving completely randomly.\n\nFor the circular-dot image, the movements will not be perfectly circular - a certain percentage of dots will be chosen to instead move randomly on each frame of animation, and this percentage will change through-out the task.", true );
+	mid_button_text.set_caption( "Press SPACEBAR to continue", true );
+	prompt_trial.present();
+end;
+
+create_new_prompt(1);
+prompt_message.set_caption("The two images will appear one after another and each will only be shown for about half a second\n\nYour task will be to decide if the first or second image contains the circular moving dots. You can make your responses by pressing [1] on the numpad if you\nthink it is the first image, and [2] if you think is the second", true );
+mid_button_text.set_caption( "Press SPACEBAR to continue", true );
+prompt_trial.present();
+
+create_new_prompt(1);
+prompt_message.set_caption("When you make correct responses, the number of dots moving in a circular motion on the next trial will decrease, making the task more difficult.\n\nSimilarly, incorrect choices will increase the number of dots that move in a circular motion.", true );
+mid_button_text.set_caption( "Press SPACEBAR to continue", true );
+prompt_trial.present();
+
+create_new_prompt(1);
+left_box.set_color( 0, 255, 0 );
+mid_box.set_color( 0, 255, 0 );
+right_box.set_color( 0, 255, 0 );
+mid_button_text.set_background_color( 0, 255, 0 );
+prompt_message.set_caption("After a certain number of trials, the task will reset to the initial difficulty and you will begin the procedure again.", true );
+mid_button_text.set_caption( "Press SPACEBAR to begin the experiment!", true );
+prompt_trial.present();
 
 loop
 	int staircase_count = 1

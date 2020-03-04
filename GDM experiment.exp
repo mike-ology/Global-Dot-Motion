@@ -1,5 +1,5 @@
 <ver>21.1</ver>
-<efn>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM experiment.exp</efn>
+<efn>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM experiment.exp</efn>
 <author>MCWE</author>
 <con>
 <pause>P</pause>
@@ -30,37 +30,64 @@
 <depchg>1</depchg>
 <discard_windows_messages>0</discard_windows_messages>
 <display_status_window>1</display_status_window>
-<dmd>32</dmd>
-<dmh>1080</dmh>
-<dmr>60</dmr>
-<dmrf>60</dmrf>
-<dmw>1920</dmw>
+<dmd>0</dmd>
+<dmh>0</dmh>
+<dmr>1</dmr>
+<dmrf>1</dmrf>
+<dmw>0</dmw>
 <docs>
 <args></args>
 <exfl></exfl>
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion</dsd>
-<dwm>0</dwm>
+<dsd>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion</dsd>
+<dwm>2</dwm>
 <dxv>8</dxv>
 <efs>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</filename>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_generation.pcl</filename>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_presentation.pcl</filename>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_generate_prompt.pcl</filename>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_logfile_saving.pcl</filename>
-<filename>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_screen_scaling.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_generation.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_stimulus_presentation.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_generate_prompt.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_logfile_saving.pcl</filename>
+<filename>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\sub_screen_scaling.pcl</filename>
 </efs>
 <exclusive_mouse>1</exclusive_mouse>
 <exp_version>0.2.0</exp_version>
 <exparam>
 <man>
 <cfg>
+<cfg>
+<en>0</en>
+<guid>{FAA7FA95-C5DE-4D45-A7D0-CFF79AFEDDF5}</guid>
+<name>100Hz Display</name>
+<r>
+<plat>2147483647</plat>
+<rd>0</rd>
+<ss>0</ss>
+</r>
+<ss>
+<sd>
+<val>
+<dat>
+<val>42</val>
+</dat>
+<id>3</id>
+</val>
+<val>
+<dat>
+<val>1.70</val>
+</dat>
+<id>8</id>
+</val>
+</sd>
+<sid>-1</sid>
+</ss>
+</cfg>
 <dcfg>
 <en>0</en>
 <guid>{3484E531-3BDC-455B-9B3B-D814A2ED1C44}</guid>
-<name>Default configuration</name>
+<name>60Hz Display</name>
 <r>
 <plat>2147483647</plat>
 <rd>0</rd>
@@ -118,7 +145,7 @@
 </val>
 <val>
 <dat>
-<val>10.2</val>
+<val>2.84</val>
 </dat>
 <id>8</id>
 </val>
@@ -127,6 +154,12 @@
 <val>205</val>
 </dat>
 <id>9</id>
+</val>
+<val>
+<dat>
+<val>1</val>
+</dat>
+<id>10</id>
 </val>
 </sd>
 <sid>-1</sid>
@@ -150,6 +183,7 @@
 <grp>
 <gn>General Parameters</gn>
 <pl>
+<pid>10</pid>
 <pid>4</pid>
 <pid>0</pid>
 <pid>1</pid>
@@ -309,6 +343,20 @@ FALSE - the circle is not drawn</desc>
 <vis>1</vis>
 </set>
 </parm>
+<parm>
+<id>10</id>
+<set>
+<desc>Should the instruction trial use the video examples or not? The videos may cause errors on some machines, so a text-only alternative is available if necessary.</desc>
+<edit>1</edit>
+<name>Use Video Instruction</name>
+<set>
+<rest></rest>
+</set>
+<temp>0</temp>
+<type>bool</type>
+<vis>1</vis>
+</set>
+</parm>
 </parms>
 <ssl></ssl>
 </parms>
@@ -352,7 +400,7 @@ FALSE - the circle is not drawn</desc>
 <idt>0</idt>
 <ilc>0</ilc>
 <ip_chans></ip_chans>
-<lfd>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM logfiles</lfd>
+<lfd>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM logfiles</lfd>
 <lnb>2</lnb>
 <lno>4</lno>
 <log>
@@ -380,7 +428,7 @@ FALSE - the circle is not drawn</desc>
 </lslset>
 <maxpv></maxpv>
 <minpv></minpv>
-<nam>GDM 2020</nam>
+<nam>Global Dot Motion 2020</nam>
 <one_processor>2</one_processor>
 <oports></oports>
 <out_encrypt_key></out_encrypt_key>
@@ -436,11 +484,6 @@ FALSE - the circle is not drawn</desc>
 <name>Keyboard</name>
 </device>
 <device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device</name>
-</device>
-<device>
 <abs_axis>
 <dead_zone>0</dead_zone>
 <max>1000</max>
@@ -483,14 +526,121 @@ FALSE - the circle is not drawn</desc>
 <name>HID-compliant mouse</name>
 </device>
 <device>
-<device_type>4</device_type>
-<dx_device_type>17</dx_device_type>
-<name>Dell KB216 Wired Keyboard</name>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>HID Keyboard Device</name>
+</device>
+<device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>HID Keyboard Device 1</name>
+</device>
+<device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>Microsoft Input Configuration Device</name>
+</device>
+<device>
+<abs_axis>
+<dead_zone>0</dead_zone>
+<max>1000</max>
+<min>-1000</min>
+<name>X-axis</name>
+<saturation>1</saturation>
+</abs_axis>
+<abs_axis>
+<dead_zone>0</dead_zone>
+<max>1000</max>
+<min>-1000</min>
+<name>Y-axis</name>
+<saturation>1</saturation>
+</abs_axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>X-axis</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>Y-axis</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>Wheel</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<device_type>2</device_type>
+<dx_device_type>0</dx_device_type>
+<max_raw_pos>65535</max_raw_pos>
+<min_raw_pos>0</min_raw_pos>
+<name>HID-compliant mouse 1</name>
+</device>
+<device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>HID Keyboard Device 2</name>
+</device>
+<device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>HID Keyboard Device 3</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>Dell KB216 Wired Keyboard 1</name>
+<name>Surface Hid Mini Driver</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Surface Hid Mini Driver 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Precise Touch</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Converted Portable Device Control device</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Micr</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Converted Portable Device Control device 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Micr 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Virtual HID Framework (VHF) HID device</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Virtual HID Framework (VHF) HID device 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Virtual HID Framework (VHF) HID device 2</name>
 </device>
 <device>
 <axis>
@@ -811,8 +961,8 @@ FALSE - the circle is not drawn</desc>
 <idv>
 <device_type>3</device_type>
 <dx_device_type>19</dx_device_type>
-<ibn>1</ibn>
-<ibn>2</ibn>
+<ibn>Num 1</ibn>
+<ibn>Num 2</ibn>
 <ibn>Space</ibn>
 <idn>Keyboard</idn>
 <index>0</index>
@@ -821,12 +971,12 @@ FALSE - the circle is not drawn</desc>
 <label></label>
 <label></label>
 <label></label>
-<offset>2</offset>
-<offset>3</offset>
+<offset>79</offset>
+<offset>80</offset>
 <offset>57</offset>
 </idv>
 <overrides></overrides>
-<sfn>D:\Personal\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</sfn>
+<sfn>C:\Users\Michael\OneDrive\University\A. Current Projects\Cognitive Tasks in Presentation\Global Dot Motion\GDM scenario.sce</sfn>
 </sce>
 <sct>
 <capture_device>
