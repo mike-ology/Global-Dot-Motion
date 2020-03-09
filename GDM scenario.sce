@@ -380,12 +380,7 @@ begin
 		# Main checks for level change
 		level_change = false; # assume no change unless detected below
 		
-		if trial_correct == true && s == 1 then
-			# immediately change level prior to first reversal
-			level_change = true;
-			array_outcomes.add( { "CORRECT", "STEP DOWN" } );
-		
-		elseif trial_correct == true && s != 1 then
+		if trial_correct == true then
 			if n_down == 1 then
 				# STEP DOWN - no need to check previous trials 
 				level_change = true;
@@ -490,8 +485,8 @@ begin
 
 		trial_count = trial_count + 1;	
 
-		feedback_pic.present();
-		wait_interval( 1000 );
+		#feedback_pic.present();
+		#wait_interval( 1000 );
 
 		
 	end;
